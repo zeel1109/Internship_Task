@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>No Broker Property Rental</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8F6F3;
+  --surface: #FFFFFF;
+  --text: #1A1A1A;
+  --text-muted: #5C5C5C;
+  --accent: #C45C26;
+  --accent-soft: #E8D5CC;
+  --border: #E5E0DA;
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 2rem 1.5rem;
+}
+
+.hero-content h1 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.hero-content h1 em {
+  font-style: italic;
+  color: var(--accent-soft);
+}
+
+.hero-content p {
+  color: rgba(255,255,255,0.92);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.2);
+}
+
+.hero-content .btn {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.75rem;
+  background: var(--accent);
+  color: white;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn:hover {
+  background: #A04A1F;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--accent-soft);
+}
+
+
+.properties {
+  background: var(--surface);
+  padding: 4rem 2.5rem 5rem;
+  border-top: 1px solid var(--border);
+}
+
+.properties-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  color: var(--text);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+
+.card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  border-color: var(--accent-soft);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.35rem;
+}
+
+.card-body h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.price {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.card-body .btn {
+  width: 100%;
+  text-align: center;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.owner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2.5rem;
+  text-align: center;
+}
+
+.owner-box {
+  background: var(--accent);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+}
+
+.owner-box h2 {
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.owner-box p {
+  opacity: 0.95;
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.owner-box .btn {
+  background: white;
+  color: var(--accent);
+}
+
+.owner-box .btn:hover {
+  background: var(--bg);
+  color: var(--accent);
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.25rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .hero {
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .properties {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">NoBroker Homes</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Properties</a>
+    <a href="#">Sign In</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Modern apartment interior">
+  </div>
+  <div class="hero-content">
+    <h1>Find your perfect <em>rental home</em> without a broker</h1>
+    <p>Browse verified homes, explore photos, and rent directly from owners—zero brokerage, full transparency.</p>
+    <a href="#" class="btn">Browse properties</a>
+  </div>
+</section>
+
+<section class="properties">
+  <div class="properties-inner">
+    <h2 class="section-title">Featured rental homes</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae" alt="Apartment">
+        <div class="card-body">
+          <h3>2BHK luxury apartment</h3>
+          <div class="price">₹18,000 / month</div>
+          <button class="btn">View details</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb" alt="Villa">
+        <div class="card-body">
+          <h3>Modern family villa</h3>
+          <div class="price">₹32,000 / month</div>
+          <button class="btn">View details</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858" alt="Studio">
+        <div class="card-body">
+          <h3>Cozy studio flat</h3>
+          <div class="price">₹10,000 / month</div>
+          <button class="btn">View details</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="Penthouse">
+        <div class="card-body">
+          <h3>3BHK penthouse with view</h3>
+          <div class="price">₹45,000 / month</div>
+          <button class="btn">View details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="owner">
+  <div class="owner-box">
+    <h2>Are you a property owner?</h2>
+    <p>List your property, add photos, and connect with serious tenants directly.</p>
+    <button class="btn">Add property</button>
+  </div>
+</section>
+
+<div class="footer">
+  © 2026 NoBroker Homes · Direct owner-to-tenant rentals
+</div>
+
+</body>
+</html>
