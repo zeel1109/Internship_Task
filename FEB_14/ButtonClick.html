@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter App</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 40px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="count">0</h1>
+
+    <button onclick="increment()">Increment</button>
+    <button onclick="decrement()">Decrement</button>
+
+    <script>
+        let counter = 0;
+
+        function increment() {
+            counter++;
+            document.getElementById("count").innerText = counter;
+        }
+
+        function decrement() {
+            counter--;
+            document.getElementById("count").innerText = counter;
+        }
+    </script>
+
+</body>
+</html>

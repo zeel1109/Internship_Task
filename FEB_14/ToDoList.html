@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(120deg,#667eea,#764ba2);
+}
+
+.container{
+    background:#fff;
+    width:400px;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.input-group{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+input{
+    flex:1;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:8px;
+    background:#667eea;
+    color:#fff;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#5a67d8;
+}
+
+ul{
+    list-style:none;
+}
+
+li{
+    background:#f4f4f4;
+    padding:10px;
+    margin-bottom:8px;
+    border-radius:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+li.completed{
+    text-decoration:line-through;
+    color:gray;
+    background:#e2e2e2;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+}
+
+.delete{
+    background:#e74c3c;
+}
+
+.delete:hover{
+    background:#c0392b;
+}
+
+.error{
+    color:red;
+    font-size:12px;
+    margin-bottom:8px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>To-Do List</h2>
+
+    <div class="input-group">
+        <input type="text" id="taskInput" placeholder="Enter a task...">
+        <button onclick="addTask()">Add</button>
+    </div>
+
+    <div class="error" id="errorMsg"></div>
+
+    <ul id="taskList"></ul>
+</div>
+
+<script>
+function addTask(){
+    const input=document.getElementById("taskInput");
+    const error=document.getElementById("errorMsg");
+    const taskText=input.value.trim();
+
+    error.innerText="";
+
+    if(taskText===""){
+        error.innerText="Task cannot be empty";
+        return;
+    }
+
+    const li=document.createElement("li");
+    li.innerHTML=`
+        <span onclick="toggleComplete(this)">${taskText}</span>
+        <div class="actions">
+            <button class="delete" onclick="deleteTask(this)">X</button>
+        </div>
+    `;
+
+    document.getElementById("taskList").appendChild(li);
+    input.value="";
+}
+
+function toggleComplete(element){
+    element.parentElement.classList.toggle("completed");
+}
+
+function deleteTask(button){
+    button.parentElement.parentElement.remove();
+}
+</script>
+
+</body>
+</html>
