@@ -39,6 +39,7 @@ public class Calculator {
         char op = sc.next().charAt(0);
 
         calculate(a, b, op);
+        sc.close();
     }
 }
 

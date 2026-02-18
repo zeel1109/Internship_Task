@@ -1,3 +1,9 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "liveServer.settings.multiRootWorkspaceName": "Internship_Task",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "FEB_17/FEB_17_WEB/lib/servlet-api.jar",
+        "FEB_17/FEB_17_WEB/lib/mysql-connector-j-8.3.0.jar"
+    ]
 }
