@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Feedback Form</title>
+</head>
+<body>
+
+<h2>Student Feedback Form</h2>
+
+<form action="FeedbackServlet" method="post">
+    Name: <input type="text" name="name"><br><br>
+    Department: <input type="text" name="dept"><br><br>
+    Course: <input type="text" name="course"><br><br>
+
+    Q1 Rating (1-5): <input type="number" name="q1"><br><br>
+    Q2 Rating (1-5): <input type="number" name="q2"><br><br>
+    Overall Rating (1-5): <input type="number" name="overall"><br><br>
+
+    <input type="submit" value="Submit Feedback">
+</form>
+
+<br>
+<a href="ViewServlet">View All Feedback</a>
+
+</body>
+</html>
